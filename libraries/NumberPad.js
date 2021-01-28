@@ -30,10 +30,10 @@ class NumberPad {
 
   draw () {
     rectMode(CORNER)
-    fill(colorHandler.palette.background)
+    fill(colorHandler.palette.buttonHighlight)
     stroke(colorHandler.palette.textHighlight)
     strokeWeight(5)
-    rect(this.position.x - this.blockSize / 2, this.position.y  - this.blockSize / 2, 3 * this.blockSize, 4 * this.blockSize)
+    rect(this.position.x - this.blockSize / 2, this.position.y  - this.blockSize / 2, 3 * this.blockSize, 4 * this.blockSize, 5)
     for (let i = 0; i <= 10; i++) {
       this.buttons[i].draw()
     }

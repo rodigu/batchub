@@ -21,7 +21,7 @@ function preload () {
 }
 
 function draw () {
-  background(0)
+  background(colorHandler.palette.background)
   b.draw()
   b.update()
 }
@@ -31,11 +31,11 @@ function windowResized () {
   RATIO = (windowWidth > windowHeight) ? windowWidth/windowHeight : windowHeight/windowWidth
 }
 
-function toucheStarted () {
+function touchStarted () {
   isTouching = true
 }
 
-function toucheEnded () {
+function touchEnded () {
   isTouching = false
 }
 

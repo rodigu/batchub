@@ -51,12 +51,15 @@ class Button {
     this.isHighlighted = false
     this.isPressed = false
     if (this.box.pointHit(mouseX, mouseY)) {
-      this.isHighlighted = true
       if (isTouching === 'undefined') {
+        this.isHighlighted = true
         if (mouseIsPressed) { this.isPressed = true }
       }
       else {
-        if (isTouching) { this.isPressed = true }
+        if (isTouching) {
+          this.isHighlighted = true
+          this.isPressed = true
+        } else this.isPressed = false
       }
     }
   }

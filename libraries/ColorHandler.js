@@ -2,7 +2,7 @@ class ColorHandler {
   constructor () {
     this.current_palette = 'default'
     this.palette = {
-      background: '#A9CBB7',
+      background: '#000000',
       buttonColor: '#EFECCA',
       textColor: '#5E565A',
       buttonHighlight: '#A9CBB7',
