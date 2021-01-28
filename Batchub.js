@@ -6,6 +6,7 @@ let TRANSLATION_FILE
 let LANGUAGE = "Portuguese"
 let colorHandler = new ColorHandler()
 let keysPressed = []
+let isTouching = 'undefined'
 
 function setup () {
   canvas = createCanvas(windowWidth, windowHeight)
@@ -28,6 +29,14 @@ function draw () {
 function windowResized () {
   resizeCanvas(windowWidth, windowHeight)
   RATIO = (windowWidth > windowHeight) ? windowWidth/windowHeight : windowHeight/windowWidth
+}
+
+function toucheStarted () {
+  isTouching = true
+}
+
+function toucheEnded () {
+  isTouching = false
 }
 
 function keyPressed () {
