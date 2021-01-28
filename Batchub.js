@@ -5,11 +5,12 @@ let translate
 let TRANSLATION_FILE
 let LANGUAGE = "Portuguese"
 let colorHandler = new ColorHandler()
+let keysPressed = []
 
 function setup () {
   canvas = createCanvas(windowWidth, windowHeight)
   RATIO = (windowWidth > windowHeight) ? windowWidth/windowHeight : windowHeight/windowWidth
-  b = new Button('b', width/2, height/2, 'CANCEL')
+  b = new NumberPad(100, 100)
   translate = new Translator(TRANSLATION_FILE.getArray())
 }
 
@@ -27,4 +28,11 @@ function draw () {
 function windowResized () {
   resizeCanvas(windowWidth, windowHeight)
   RATIO = (windowWidth > windowHeight) ? windowWidth/windowHeight : windowHeight/windowWidth
+}
+
+function keyPressed () {
+  keysPressed.push(key)
+}
+function keyReleased () {
+  keysPressed.pop()
 }

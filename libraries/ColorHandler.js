@@ -3,29 +3,22 @@ class ColorHandler {
     this.current_palette = 'default'
     this.palette = {
       background: '#000000',
-      buttonColor: '#7C2839',
-      textColor: '#E6D2A6',
-      buttonHighlight: '#C16E4F',
-      textHighlight: '#97D2A3'
+      buttonColor: '#EFECCA',
+      textColor: '#5E565A',
+      buttonHighlight: '#A9CBB7',
+      textHighlight: '#5E565A'
     }
     this.fonts = {}
     this.currentFont
     this.textSize = 40
-    this.textStroke = {
-      color: 0,
-      weight: 1
-    }
-    this.buttonStroke = {
-      color: 200,
-      weight: 2
-    }
   }
 
   preload () {
     this.addFont('game_over', '.ttf')
     this.addFont('open_dyslexic_regular', '.otf')
     this.addFont('open_dyslexic_bold', '.otf')
-    this.currentFont = 'game_over'
+    this.addFont('neutra_text_bold', '.otf')
+    this.currentFont = 'neutra_text_bold'
   }
 
   addFont (fontName, fontType) {
@@ -39,11 +32,11 @@ class ColorHandler {
   setPalette (new_palette) {
     if (new_palette === 'color_blindness_0') {
       this.palette = {
-        background: '#090000',
-        buttonColor: '#F7193A',
-        textColor: '#59B7D9',
-        buttonHighlight: '#3768DB',
-        textHighlight: '#A0DFDB'
+        background: '#000000',
+        buttonColor: '#EFECCA',
+        textColor: '#5E565A',
+        buttonHighlight: '#A9CBB7',
+        textHighlight: '#5E565A'
       }
     } else if (new_palette === 'default') {
       this.palette = {
@@ -56,24 +49,24 @@ class ColorHandler {
     }
   }
 
-  colorButton (isHighlighted = false) {
+  colorButton (isHighlighted = false, buttonStroke) {
     if (isHighlighted) {
       fill(this.palette.buttonHighlight)
     } else {
       fill(this.palette.buttonColor)
     }
-    stroke(this.buttonStroke.color)
-    strokeWeight(this.buttonStroke.weight)
+    stroke(buttonStroke.color)
+    strokeWeight(buttonStroke.weight)
   }
 
-  colorText (isHighlighted = false) {
+  colorText (isHighlighted = false, textStroke) {
     if (isHighlighted) {
       fill(this.palette.textHighlight)
     } else {
       fill(this.palette.textColor)
     }
-    stroke(this.textStroke.color)
-    strokeWeight(this.textStroke.weight)
+    stroke(textStroke.color)
+    strokeWeight(textStroke.weight)
     textFont(this.fonts[this.currentFont])
     textSize(this.textSize)
     textAlign(CENTER, CENTER)
