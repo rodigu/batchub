@@ -7,11 +7,13 @@ let LANGUAGE = "Portuguese"
 let colorHandler = new ColorHandler()
 let keysPressed = []
 let isTouching = 'undefined'
+let BLOCK_SIZE
 
 function setup () {
   canvas = createCanvas(windowWidth, windowHeight)
   RATIO = (windowWidth > windowHeight) ? windowWidth/windowHeight : windowHeight/windowWidth
-  b = new NumberPad(100, 100)
+  BLOCK_SIZE = RATIO * 50
+  b = new Calculator()
   translate = new Translator(TRANSLATION_FILE.getArray())
 }
 
@@ -24,6 +26,7 @@ function draw () {
   background(colorHandler.palette.background)
   b.draw()
   b.update()
+  // console.log(mouseX, mouseY)
 }
 
 function windowResized () {

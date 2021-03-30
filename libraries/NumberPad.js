@@ -2,11 +2,11 @@ class NumberPad {
   constructor (x_, y_) {
     this.history = []
     this.buttons = []
-    this.blockSize = RATIO*50
+    this.blockSize = BLOCK_SIZE
     this.pressDelay = 0
     this.position = {
-      x: x_,
-      y: y_
+      x: x_ - this.blockSize,
+      y: y_ - (this.blockSize + this.blockSize / 2)
     }
     this.buttons.push(new Button(0, this.position.x + this.blockSize, this.position.y + 3*this.blockSize, '0', 'pad'))
     this.buttons[0].useCustomDimensions = true

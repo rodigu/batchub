@@ -21,20 +21,21 @@ class Button {
   }
 
   draw () {
-    rectMode(CENTER)
-    colorHandler.colorButton(this.isHighlighted, this.stroke)
-    rect(this.box.position.x, this.box.position.y, this.box.width, this.box.height, 5)
-    colorHandler.colorText(this.isHighlighted, this.textStroke)
     if (!this.useCustomDimensions) {
       this.setDimensions()
     } else {
       this.box.width = this.customDimensions.width
       this.box.height = this.customDimensions.height
     }
+    rectMode(CENTER)
+    colorHandler.colorButton(this.isHighlighted, this.stroke)
+    rect(this.box.position.x, this.box.position.y, this.box.width, this.box.height, 5)
+
     let txt
     if (isNaN(parseInt(this.text)) && this.text != '<') {
       txt = translate.text[this.text][LANGUAGE]
     } else { txt = this.text }
+    colorHandler.colorText(this.isHighlighted, this.textStroke)
     text(txt, this.box.position.x, this.box.position.y)
   }
 
