@@ -11,13 +11,12 @@ let BLOCK_SIZE
 let IS_PORTRAIT = true
 
 function setup () {
-  canvas = (windowWidth > windowHeight) ? createCanvas(windowHeight * 3 / 4, windowHeight) : createCanvas(windowWidth, windowHeight)
-  canvas.position((windowWidth / 2) - windowHeight * 3 / 8, 0)
-  RATIO = height / width
+  canvas = createCanvas(windowWidth, windowHeight)
   IS_PORTRAIT = (windowHeight > windowWidth)
-  BLOCK_SIZE = RATIO * 50
+  BLOCK_SIZE = windowWidth / 5
   b = new Calculator()
   translate = new Translator(TRANSLATION_FILE.getArray())
+  colorHandler.textSize = BLOCK_SIZE
 }
 
 function preload () {

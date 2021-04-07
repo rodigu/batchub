@@ -3,7 +3,7 @@ class Calculator {
         this.operation = 'none'
         this.numbers = {a: 0, b: 0}
         this.difficulty = 1
-        this.numPad = new NumberPad(width / 2, height - BLOCK_SIZE * 3)
+        this.numPad = new NumberPad(width / 2, height - BLOCK_SIZE * 2.5)
         this._createButtons()
         this.answer = -1
         this.answerDelay = 16
@@ -24,11 +24,11 @@ class Calculator {
         this.buttons.b.stroke.color = colorHandler.palette.textHighlight
         this.buttons.b.stroke.weight = 5
 
-        this.buttons.input =  new Button('IN', width / 2, 3.5 * BLOCK_SIZE, '0', false)
+        this.buttons.input =  new Button('IN', width / 2, 3.25 * BLOCK_SIZE, '0', false)
         this.buttons.input.setCustomDimensions({ width: BLOCK_SIZE * 4, height: BLOCK_SIZE }, { color: colorHandler.palette.textHighlight, weight: 5 })
         this.generate('+')
 
-        this.buttons.operation = new Button('OP', (width / 2) - 2 * BLOCK_SIZE, 2 * BLOCK_SIZE, this.operation, false)
+        this.buttons.operation = new Button('OP', (width / 2) - 1.75 * BLOCK_SIZE, 2 * BLOCK_SIZE, this.operation, false)
         this.buttons.operation.setCustomDimensions({ width: BLOCK_SIZE, height: BLOCK_SIZE }, { color: colorHandler.palette.textHighlight, weight: 5 })
         this.buttons.operation.roundness = 50
     }

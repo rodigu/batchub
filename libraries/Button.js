@@ -7,8 +7,8 @@ class Button {
     this.isHighlighted = false
     this.useCustomDimensions = false
     this.customDimensions = {
-      width: RATIO*45,
-      height: RATIO*45
+      width: BLOCK_SIZE,
+      height: BLOCK_SIZE
     }
     this.textStroke = {
       color: 0,
