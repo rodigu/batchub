@@ -43,9 +43,11 @@ class NumberPad {
     this.pressDelay ++
     for (let i = 0; i <= 10; i++) {
       this.buttons[i].update()
-      if (this.buttons[i].isPressed) {
-        if (this.pressDelay > 16) {
-          this.pressDelay = 0
+      if (this.buttons[i].isPressed && this.pressDelay > 16) {
+        this.pressDelay = 0
+        if (this.buttons[i].id === '<') {
+          this.history.pop()
+        } else {
           this.history.push(this.buttons[i].id)
         }
       }

@@ -8,10 +8,13 @@ let colorHandler = new ColorHandler()
 let keysPressed = []
 let isTouching = 'undefined'
 let BLOCK_SIZE
+let IS_PORTRAIT = true
 
 function setup () {
-  canvas = createCanvas(windowWidth, windowHeight)
-  RATIO = (windowWidth > windowHeight) ? windowWidth/windowHeight : windowHeight/windowWidth
+  canvas = (windowWidth > windowHeight) ? createCanvas(windowHeight * 3 / 4, windowHeight) : createCanvas(windowWidth, windowHeight)
+  canvas.position((windowWidth / 2) - windowHeight * 3 / 8, 0)
+  RATIO = height / width
+  IS_PORTRAIT = (windowHeight > windowWidth)
   BLOCK_SIZE = RATIO * 50
   b = new Calculator()
   translate = new Translator(TRANSLATION_FILE.getArray())
@@ -26,12 +29,6 @@ function draw () {
   background(colorHandler.palette.background)
   b.draw()
   b.update()
-  // console.log(mouseX, mouseY)
-}
-
-function windowResized () {
-  resizeCanvas(windowWidth, windowHeight)
-  RATIO = (windowWidth > windowHeight) ? windowWidth/windowHeight : windowHeight/windowWidth
 }
 
 function touchStarted () {

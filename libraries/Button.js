@@ -1,5 +1,5 @@
 class Button {
-  constructor (id_, x_, y_, text_, layer_ = 'buttons') {
+  constructor (id_, x_, y_, text_, trans = true, layer_ = 'buttons') {
     this.box = new CollisionBox(x_, y_, 0, 0, layer_)
     this.isPressed = false
     this.id = id_
@@ -18,6 +18,8 @@ class Button {
       color: 200,
       weight: 0
     }
+    this.roundness = 5
+    this.doTranslate = trans
   }
 
   draw () {
@@ -29,10 +31,10 @@ class Button {
     }
     rectMode(CENTER)
     colorHandler.colorButton(this.isHighlighted, this.stroke)
-    rect(this.box.position.x, this.box.position.y, this.box.width, this.box.height, 5)
+    rect(this.box.position.x, this.box.position.y, this.box.width, this.box.height, this.roundness)
 
     let txt
-    if (isNaN(parseInt(this.text)) && this.text != '<') {
+    if (this.doTranslate && (isNaN(parseInt(this.text)) && this.text != '<')) {
       txt = translate.text[this.text][LANGUAGE]
     } else { txt = this.text }
     colorHandler.colorText(this.isHighlighted, this.textStroke)
@@ -41,11 +43,15 @@ class Button {
 
   setDimensions () {
     let txt
-    if (isNaN(parseInt(this.text)) && this.text != '<') {
+    if (this.doTranslate && (isNaN(parseInt(this.text)) && this.text != '<')) {
       txt = translate.text[this.text][LANGUAGE]
     } else { txt = this.text }
     this.box.width = textWidth(txt) * 11 / 10
     this.box.height = colorHandler.textSize * 3 / 2
+  }
+
+  setStroke (stroke_) {
+    this.stroke = stroke_
   }
 
   update () {
@@ -63,5 +69,11 @@ class Button {
         } else this.isPressed = false
       }
     }
+  }
+
+  setCustomDimensions(customD, stroke_) {
+    this.customDimensions = customD
+    this.stroke = stroke_
+    this.useCustomDimensions = true
   }
 }

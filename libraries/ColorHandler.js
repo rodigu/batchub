@@ -6,7 +6,11 @@ class ColorHandler {
       buttonColor: '#EFECCA',
       textColor: '#5E565A',
       buttonHighlight: '#A9CBB7',
-      textHighlight: '#5E565A'
+      textHighlight: '#5E565A',
+      textStroke: {
+        weight: 2,
+        color: '#FFAAAA'
+      }
     }
     this.fonts = {}
     this.currentFont
@@ -36,7 +40,11 @@ class ColorHandler {
         buttonColor: '#EFECCA',
         textColor: '#5E565A',
         buttonHighlight: '#A9CBB7',
-        textHighlight: '#5E565A'
+        textHighlight: '#5E565A',
+        textStroke: {
+          weight: 2,
+          color: '#FFAAAA'
+        }
       }
     } else if (new_palette === 'default') {
       this.palette = {
@@ -44,7 +52,11 @@ class ColorHandler {
         buttonColor: '#C16E4F',
         textColor: '#E6D2A6',
         buttonHighlight: '#7C2839',
-        textHighlight: '#97D2A3'
+        textHighlight: '#97D2A3',
+        textStroke: {
+          weight: 2,
+          color: '#FFAAAA'
+        }
       }
     }
   }
@@ -59,14 +71,14 @@ class ColorHandler {
     strokeWeight(buttonStroke.weight)
   }
 
-  colorText (isHighlighted = false, textStroke) {
+  colorText (isHighlighted = false) {
     if (isHighlighted) {
       fill(this.palette.textHighlight)
     } else {
       fill(this.palette.textColor)
     }
-    stroke(textStroke.color)
-    strokeWeight(textStroke.weight)
+    stroke(this.palette.textStroke.color)
+    strokeWeight(this.palette.textStroke.weight)
     textFont(this.fonts[this.currentFont])
     textSize(this.textSize)
     textAlign(CENTER, CENTER)
